@@ -5,7 +5,7 @@ class Paymenttracker
 {
     static void Main()
     {        
-        List<Payment> payments = new List<Payment>();
+        List<Payment> payments = new List<Payment>(); // "()" parameterless constructor - ask more questions about that later.
         //Below, we add to this list called 'payments'
 
         while (true)
@@ -33,7 +33,8 @@ class Paymenttracker
                 SearchPayments(payments);
                 break;
             case 4:
-                CalculateTotal(payments);
+                decimal total = CalculateTotal(payments);
+                Console.WriteLine($"Total payments: {total:C}");
                 break;
             case 5:
                 Console.WriteLine("Existing...");
@@ -135,11 +136,17 @@ static void SearchPayments(List<Payment> payments)
             Console.WriteLine("No matching payments found.");
             }
     }
-static decimal CalculateTotal(List<Payment> payments)
+static decimal CalculateTotal(List<Payment> payments) // 'payments' here is just referring
+// to whatever is put into parentheses when calling this method.
+
+//I need to make it where it doesn't the amounts of all clients.
+//It needs to first ask for a client name, then add up that client's payments only.
+
     {
     decimal total = 0;
     foreach (Payment payment in payments)
         {total += payment.Amount;}
-    return total; 
+    return total; //value that gets sent back is stored in
+    //CalculateTotal(payments) and the name of this location is "total".
     }
 }
